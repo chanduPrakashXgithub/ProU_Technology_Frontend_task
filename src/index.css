@@ -7,6 +7,257 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+  --bg: #ffffff;
+  --text: #212529;
+  --muted: #6c757d;
+  --card: #ffffff;
+  --primary: #0d6efd;
+  --nav-bg: linear-gradient(90deg, #000000, #0b0b0b);
+  --nav-text: #ffffff;
+  --nav-shadow: 0 6px 20px rgba(2, 6, 23, 0.18);
+  --card-shadow-3d: 0 12px 30px rgba(2, 6, 23, 0.12), inset 0 -6px 12px rgba(255, 255, 255, 0.02);
+  --card-border: rgba(2, 6, 23, 0.06);
+  --overlay-light: rgba(255, 255, 255, 0.02);
+}
+
+:root[data-theme="dark"] {
+  --bg: #0f1720;
+  --text: #e6eef6;
+  --muted: #9aa7b2;
+  --card: #071226;
+  --primary: #66b2ff;
+  --nav-bg: linear-gradient(90deg, #07182b, #001122);
+  --nav-text: #e6f6ff;
+  --nav-shadow: 0 14px 36px rgba(2, 8, 30, 0.45);
+  --card-shadow-3d: 0 18px 46px rgba(3, 9, 30, 0.55), inset 0 -8px 18px rgba(0, 64, 128, 0.06);
+  --card-border: rgba(102, 153, 255, 0.12);
+  --overlay-light: rgba(255, 255, 255, 0.00);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 980px;
+}
+
+.navbar {
+  background: var(--nav-bg);
+  border-radius: 8px;
+  padding: .5rem 1rem;
+  box-shadow: var(--nav-shadow);
+  color: var(--nav-text);
+}
+
+.navbar .brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.card {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  transition: background-color .25s ease, color .2s ease, border-color .3s ease, box-shadow .3s ease, transform .18s ease;
+}
+
+.card h5 {
+  margin-bottom: 0;
+}
+
+.filterbar {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.alert {
+  background: linear-gradient(180deg, var(--overlay-light), rgba(0, 0, 0, 0.02));
+  border-radius: 8px;
+}
+
+.form-select,
+.form-control {
+  background: linear-gradient(180deg, var(--overlay-light), rgba(0, 0, 0, 0.02));
+  color: var(--text);
+  border-radius: 6px;
+  border: 1px solid var(--card-border);
+  transition: color .18s ease, background-color .25s ease, border-color .25s ease;
+}
+
+/* Stats cards */
+.stats-row {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch;
+  margin-bottom: 1rem;
+}
+
+.stats-card {
+  flex: 1;
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--card);
+  box-shadow: var(--card-shadow-3d);
+  border: 1px solid var(--card-border);
+  transition: box-shadow .3s ease, border-color .3s ease, transform .18s ease, background-color .25s ease;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stats-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  background: linear-gradient(135deg, var(--overlay-light), rgba(0, 0, 0, 0.04));
+}
+
+.stats-body {
+  flex: 1;
+}
+
+.stats-title {
+  margin: 0;
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+.stats-value {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.progress-ring {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+
+/* Dark theme tweaks for inputs */
+:root[data-theme="dark"] .form-select,
+:root[data-theme="dark"] .form-control {
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: transparent;
+  color: var(--nav-text);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: .25rem .6rem;
+  border-radius: 8px;
+}
+
+.theme-toggle:active {
+  transform: translateY(1px);
+}
+
+.brand {
+  color: var(--nav-text);
+}
+
+/* Auth buttons in navbar (non-functional) */
+.auth-btn {
+  background: transparent;
+  color: var(--nav-text);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: .25rem .6rem;
+  border-radius: 8px;
+}
+
+.auth-btn:hover {
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.12);
+}
+
+/* Task card tweaks */
+.task-card {
+  padding: .75rem;
+  border-radius: 10px;
+  background: var(--card);
+  box-shadow: var(--card-shadow-3d);
+  border: 1px solid var(--card-border);
+  transition: background-color .25s ease, color .18s ease, border-color .3s ease, box-shadow .3s ease, transform .18s ease;
+}
+
+.task-card .form-select {
+  width: 140px;
+}
+
+.task-card .btn {
+  padding: .25rem .5rem;
+}
+
+.badge {
+  font-weight: 600;
+  padding: .35rem .55rem;
+  border-radius: 8px;
+}
+
+/* status pill shown on the right of task cards */
+.status-pill {
+  padding: .35rem .7rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: .85rem;
+  min-width: 90px;
+  text-align: center;
+  box-shadow: 0 6px 14px rgba(2, 6, 23, 0.12);
+}
+
+/* Ensure task text uses theme color and remains readable */
+.reset-btn {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.02), rgba(255, 100, 100, 0.02));
+  color: var(--nav-text);
+  border: 1px solid rgba(255, 100, 100, 0.12);
+  padding: .25rem .6rem;
+  border-radius: 8px;
+}
+
+.reset-btn:hover {
+  box-shadow: 0 8px 22px rgba(255, 80, 80, 0.06);
+}
+
+.task-card,
+.task-card strong,
+.task-card .form-control,
+.task-card select,
+.task-card .badge {
+  color: var(--text) !important;
+}
+
+/* subtle hover lift and border glow */
+.card:hover,
+.task-card:hover,
+.stats-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(2, 6, 23, 0.18);
+}
+
+/* animate border-color when theme changes */
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .task-card,
+html[data-theme="dark"] .stats-card {
+  border-color: var(--card-border);
+}
+
+
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
