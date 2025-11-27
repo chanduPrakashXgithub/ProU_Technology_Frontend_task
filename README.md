@@ -2,6 +2,13 @@
 
 A small React application for tracking employee tasks. Built with Create React App and Bootstrap. The UI supports light/dark themes, task filtering, adding tasks, and local persistence using `localStorage`.
 
+Live Demo
+---------
+
+Try the live demo deployed on Vercel:
+
+- Live demo: https://pro-u-technology-frontend-task.vercel.app/
+
 **Status:** Prototype / Frontend demo
 
 **Main files**
